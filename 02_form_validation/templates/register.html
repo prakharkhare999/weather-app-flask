@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+ <form action="/register" method="Post">
+   <!--
+ this hidden tag is used for security csrf token also related to it.
+-->
+    
+    {{ form.hidden_tag() }}
+    {{form.username.label}}
+
+{% if form.username.errors    %}
+  {{form.username}}
+  {%  for error in errors  %}
+  <span>{{error}}</span>
+  {%  endfor %}
+{% else % }
+{{form.username}}
+
+{% endif  % }
+
+
+   
+    {{form.email.label}}
+    {{form.email}}
+    {{form.password.label}}
+    {{form.password}}
+    {{form.confirm_password.label}}
+    {{form.confirm_password}}
+    {{form.submit}}
+
+
+<div>
+Already Have An account ?
+<br>
+<!--
+  in url for always pass the function for the routing 
+-->
+
+
+<a    href="{{url_for('login')}}"         >
+Sign IN
+
+</a>
+
+</div>
+
+    
+</body>
+</html>
